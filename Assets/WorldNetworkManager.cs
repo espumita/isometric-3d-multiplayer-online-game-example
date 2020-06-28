@@ -6,6 +6,8 @@ public class WorldNetworkManager : MonoBehaviourPunCallbacks {
     public GameObject PlayerPrefab;
 
     void Start() {
+        var playerNickName = PhotonNetwork.NickName;
+        Debug.Log($"Player: {playerNickName} Join to:{PhotonNetwork.CurrentRoom.Name}");
         PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector3(0, 5, 0), Quaternion.identity);
     }
 

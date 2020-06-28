@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviourPunCallbacks {
+
+    public InputField PlayerNameInputField;
+
+
     void Start() {
         Connect();
     }
@@ -12,6 +17,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks {
     }
 
     public void Play() {
+        PhotonNetwork.NickName = $"{PlayerNameInputField.text}";
         PhotonNetwork.JoinRandomRoom();
     }
 
@@ -24,7 +30,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks {
     }
 
     public override void OnJoinedRoom() {
-        Debug.Log($"Connected to Room InRoom:{PhotonNetwork.InRoom}, {PhotonNetwork.CurrentRoom}");
+        Debug.Log($"Connected to Room InRoom:{PhotonNetwork.InRoom}, {PhotonNetwork.CurrentRoom.Name}");
         if (PhotonNetwork.IsMasterClient) {
             PhotonNetwork.LoadLevel(1);
     
