@@ -8,10 +8,8 @@ public class PlayerNameTag : MonoBehaviourPun {
     [SerializeField] private TextMeshProUGUI NickName;
 
     void Start() {
-        if (photonView.IsMine) {
-            NickName.text = PhotonNetwork.NickName;
-        } else {
-            NickName.text = photonView.Owner.NickName;
-        }
+        NickName.text = photonView.IsMine 
+            ? PhotonNetwork.NickName 
+            : photonView.Owner.NickName;
     }
 }
