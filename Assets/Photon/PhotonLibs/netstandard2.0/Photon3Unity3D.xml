@@ -316,7 +316,7 @@
             <returns>If a Dispatch happened or not, which shows if more Dispatches might be needed.</returns>
         </member>
         <member name="M:ExitGames.Client.Photon.EnetPeer.GetFragmentLength">
-            <summary>Gets the target size for fragments.</summary>
+            <summary>Gets the targetToFollow size for fragments.</summary>
             <remarks>
             Caches the result for a specific MTU value.
             Fragment length is different, when datagram encryption is used (so this caches two values in fact).
@@ -1805,7 +1805,7 @@
              A longer interval between sends will lower the overhead per sent operation but
              increase the internal delay (which adds "lag").
             
-             Call this 2..20 times per second (depending on your target platform).
+             Call this 2..20 times per second (depending on your targetToFollow platform).
              </remarks>
              <returns>The if commands are not yet sent. Udp limits it's package size, Tcp doesnt.</returns>
         </member>
@@ -2065,30 +2065,30 @@
         </member>
         <member name="M:ExitGames.Client.Photon.Protocol.Serialize(System.Int16,System.Byte[],System.Int32@)">
             <summary>
-            Serializes a short typed value into a byte-array (target) starting at the also given targetOffset.
+            Serializes a short typed value into a byte-array (targetToFollow) starting at the also given targetToFollowOffset.
             The altered offset is known to the caller, because it is given via a referenced parameter.
             </summary>
             <param name="value">The short value to be serialized</param>
-            <param name="target">The byte-array to serialize the short to</param>
-            <param name="targetOffset">The offset in the byte-array</param>
+            <param name="targetToFollow">The byte-array to serialize the short to</param>
+            <param name="targetToFollowOffset">The offset in the byte-array</param>
         </member>
         <member name="M:ExitGames.Client.Photon.Protocol.Serialize(System.Int32,System.Byte[],System.Int32@)">
             <summary>
-            Serializes an int typed value into a byte-array (target) starting at the also given targetOffset.
+            Serializes an int typed value into a byte-array (targetToFollow) starting at the also given targetToFollowOffset.
             The altered offset is known to the caller, because it is given via a referenced parameter.
             </summary>
             <param name="value">The int value to be serialized</param>
-            <param name="target">The byte-array to serialize the short to</param>
-            <param name="targetOffset">The offset in the byte-array</param>
+            <param name="targetToFollow">The byte-array to serialize the short to</param>
+            <param name="targetToFollowOffset">The offset in the byte-array</param>
         </member>
         <member name="M:ExitGames.Client.Photon.Protocol.Serialize(System.Single,System.Byte[],System.Int32@)">
             <summary>
-            Serializes an float typed value into a byte-array (target) starting at the also given targetOffset.
+            Serializes an float typed value into a byte-array (targetToFollow) starting at the also given targetToFollowOffset.
             The altered offset is known to the caller, because it is given via a referenced parameter.
             </summary>
             <param name="value">The float value to be serialized</param>
-            <param name="target">The byte-array to serialize the short to</param>
-            <param name="targetOffset">The offset in the byte-array</param>
+            <param name="targetToFollow">The byte-array to serialize the short to</param>
+            <param name="targetToFollowOffset">The offset in the byte-array</param>
         </member>
         <member name="M:ExitGames.Client.Photon.Protocol.Deserialize(System.Int32@,System.Byte[],System.Int32@)">
             <summary>
