@@ -9,22 +9,28 @@ public class PlayerController : MonoBehaviourPunCallbacks {
 
     void Start() {
         if (!photonView.IsMine) {
-            Camera.enabled = false;
-            GetComponentInChildren<AudioListener>().enabled = false;
+            DoNothing();
         }
+    }
+    private void DoNothing() {
+        Camera.enabled = false;
+        GetComponentInChildren<AudioListener>().enabled = false;
     }
 
     void Update() {
         if (!photonView.IsMine) return;
         if (Input.GetMouseButton(0)) {
-            var ray = Camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            var hitSomething = Physics.Raycast(ray, out hit);
+            MovePlayerToRightButtonPosition();
+        }
+    }
 
-            if (hitSomething) {
-                ModeAgentTo(hit);
-            }
+    private void MovePlayerToRightButtonPosition() {
+        var ray = Camera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        var hitSomething = Physics.Raycast(ray, out hit);
 
+        if (hitSomething) {
+            ModeAgentTo(hit);
         }
     }
 
