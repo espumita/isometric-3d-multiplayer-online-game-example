@@ -8,10 +8,11 @@ public class WorldNetworkManager : MonoBehaviourPunCallbacks {
     void Start() {
         var playerNickName = PhotonNetwork.NickName;
         Debug.Log($"Player: {playerNickName} Join to:{PhotonNetwork.CurrentRoom.Name}");
+        SpawnPlayer();
+    }
+
+    private void SpawnPlayer() {
         PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector3(0, 5, 0), Quaternion.identity);
     }
 
-    void Update() {
-
-    }
 }
