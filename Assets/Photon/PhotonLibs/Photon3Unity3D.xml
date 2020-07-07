@@ -251,7 +251,7 @@
             <param name="data"></param>
             <param name="len"></param>
             <param name="output"></param>
-            <param name="offset"></param>
+            <param name="distanceFromTargetOffset"></param>
             <param name="ivPrefix"></param>
             <returns></returns>
         </member>
@@ -266,7 +266,7 @@
             Decrypts buffer containing HMAC
             </summary>
             <param name="data">encrypted data prepened by IV</param>
-            <param name="offset">offset in the buffer</param>
+            <param name="distanceFromTargetOffset">distanceFromTargetOffset in the buffer</param>
             <param name="len">len of data to decrypt</param>
             /// <param name="outLen">len of decrypted data</param>
             <param name="ivPrefix"></param>
@@ -628,7 +628,7 @@
             The buffer will not contain Ethernet Header, IP, UDP level data. Only the payload received by the client.
             
             It is advised to not use NetworkSimulation when recording traffic.
-            The recording is done on the timing of actual receive- and send-calls and internal simulation would offset the timing.
+            The recording is done on the timing of actual receive- and send-calls and internal simulation would distanceFromTargetOffset the timing.
             </remarks>
             <param name="inBuffer">Buffer to be sent or received. Check length value for actual content length.</param>
             <param name="length">Length of the network data.</param>
@@ -653,7 +653,7 @@
              ACKs should never be created as NCommand. use CreateACK to wrtie the serialized ACK right away...
             </summary>
             <param name="buffer"></param>
-            <param name="offset"></param>
+            <param name="distanceFromTargetOffset"></param>
             <param name="commandToAck"></param>
             <param name="sentTime"></param>
             <returns></returns>
@@ -1402,7 +1402,7 @@
              TCP: The server's timestamp fetched with each ping but set only after connecting (once).
             
              The approximation will be off by +/- 10ms in most cases. Per peer/client and connection, the
-             offset will be constant (unless FetchServerTimestamp() is used). A constant offset should be
+             distanceFromTargetOffset will be constant (unless FetchServerTimestamp() is used). A constant distanceFromTargetOffset should be
              better to adjust for. Unfortunately there is no way to find out how much the local value
              differs from the original.
             
@@ -2066,59 +2066,59 @@
         <member name="M:ExitGames.Client.Photon.Protocol.Serialize(System.Int16,System.Byte[],System.Int32@)">
             <summary>
             Serializes a short typed value into a byte-array (targetToFollow) starting at the also given targetToFollowOffset.
-            The altered offset is known to the caller, because it is given via a referenced parameter.
+            The altered distanceFromTargetOffset is known to the caller, because it is given via a referenced parameter.
             </summary>
             <param name="value">The short value to be serialized</param>
             <param name="targetToFollow">The byte-array to serialize the short to</param>
-            <param name="targetToFollowOffset">The offset in the byte-array</param>
+            <param name="targetToFollowOffset">The distanceFromTargetOffset in the byte-array</param>
         </member>
         <member name="M:ExitGames.Client.Photon.Protocol.Serialize(System.Int32,System.Byte[],System.Int32@)">
             <summary>
             Serializes an int typed value into a byte-array (targetToFollow) starting at the also given targetToFollowOffset.
-            The altered offset is known to the caller, because it is given via a referenced parameter.
+            The altered distanceFromTargetOffset is known to the caller, because it is given via a referenced parameter.
             </summary>
             <param name="value">The int value to be serialized</param>
             <param name="targetToFollow">The byte-array to serialize the short to</param>
-            <param name="targetToFollowOffset">The offset in the byte-array</param>
+            <param name="targetToFollowOffset">The distanceFromTargetOffset in the byte-array</param>
         </member>
         <member name="M:ExitGames.Client.Photon.Protocol.Serialize(System.Single,System.Byte[],System.Int32@)">
             <summary>
             Serializes an float typed value into a byte-array (targetToFollow) starting at the also given targetToFollowOffset.
-            The altered offset is known to the caller, because it is given via a referenced parameter.
+            The altered distanceFromTargetOffset is known to the caller, because it is given via a referenced parameter.
             </summary>
             <param name="value">The float value to be serialized</param>
             <param name="targetToFollow">The byte-array to serialize the short to</param>
-            <param name="targetToFollowOffset">The offset in the byte-array</param>
+            <param name="targetToFollowOffset">The distanceFromTargetOffset in the byte-array</param>
         </member>
         <member name="M:ExitGames.Client.Photon.Protocol.Deserialize(System.Int32@,System.Byte[],System.Int32@)">
             <summary>
-            Deserialize fills the given int typed value with the given byte-array (source) starting at the also given offset.
+            Deserialize fills the given int typed value with the given byte-array (source) starting at the also given distanceFromTargetOffset.
             The result is placed in a variable (value). There is no need to return a value because the parameter value is given by reference.
-            The altered offset is this way also known to the caller.
+            The altered distanceFromTargetOffset is this way also known to the caller.
             </summary>
             <param name="value">The int value to deserialize into</param>
             <param name="source">The byte-array to deserialize from</param>
-            <param name="offset">The offset in the byte-array</param>
+            <param name="distanceFromTargetOffset">The distanceFromTargetOffset in the byte-array</param>
         </member>
         <member name="M:ExitGames.Client.Photon.Protocol.Deserialize(System.Int16@,System.Byte[],System.Int32@)">
             <summary>
-            Deserialize fills the given short typed value with the given byte-array (source) starting at the also given offset.
+            Deserialize fills the given short typed value with the given byte-array (source) starting at the also given distanceFromTargetOffset.
             The result is placed in a variable (value). There is no need to return a value because the parameter value is given by reference.
-            The altered offset is this way also known to the caller.
+            The altered distanceFromTargetOffset is this way also known to the caller.
             </summary>
             <param name="value">The short value to deserialized into</param>
             <param name="source">The byte-array to deserialize from</param>
-            <param name="offset">The offset in the byte-array</param>
+            <param name="distanceFromTargetOffset">The distanceFromTargetOffset in the byte-array</param>
         </member>
         <member name="M:ExitGames.Client.Photon.Protocol.Deserialize(System.Single@,System.Byte[],System.Int32@)">
             <summary>
-            Deserialize fills the given float typed value with the given byte-array (source) starting at the also given offset.
+            Deserialize fills the given float typed value with the given byte-array (source) starting at the also given distanceFromTargetOffset.
             The result is placed in a variable (value). There is no need to return a value because the parameter value is given by reference.
-            The altered offset is this way also known to the caller.
+            The altered distanceFromTargetOffset is this way also known to the caller.
             </summary>
             <param name="value">The float value to deserialize</param>
             <param name="source">The byte-array to deserialize from</param>
-            <param name="offset">The offset in the byte-array</param>
+            <param name="distanceFromTargetOffset">The distanceFromTargetOffset in the byte-array</param>
         </member>
         <member name="T:ExitGames.Client.Photon.Protocol16">
             <summary>
@@ -2437,7 +2437,7 @@
         </member>
         <member name="M:ExitGames.Client.Photon.StreamBuffer.GetBufferAndAdvance(System.Int32,System.Int32@)">
             <summary>
-            Brings StreamBuffer to the state as after writing of 'length' bytes. Returned buffer and offset can be used to actually fill "written" segment with data.
+            Brings StreamBuffer to the state as after writing of 'length' bytes. Returned buffer and distanceFromTargetOffset can be used to actually fill "written" segment with data.
             </summary>
         </member>
         <member name="M:ExitGames.Client.Photon.StreamBuffer.SetLength(System.Int64)">

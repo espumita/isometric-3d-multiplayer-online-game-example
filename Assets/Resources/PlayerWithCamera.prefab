@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothSpeed: 0.125
-  offset: {x: -10, y: 10, z: -10}
+  distanceFromTargetOffset: {x: -10, y: 10, z: -10}
   targetToFollow: {fileID: 4963609135537106211}
 --- !u!1 &4963609135537106208
 GameObject:
