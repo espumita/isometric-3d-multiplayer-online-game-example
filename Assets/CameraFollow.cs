@@ -7,8 +7,12 @@ public class CameraFollow : MonoBehaviour {
     public Transform target;
 
     void FixedUpdate() {
-        var desiredPosition = target.position  + offset;
-        var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
+        MakeSmoothCameraMoveToTarget();
+    }
+
+    private void MakeSmoothCameraMoveToTarget() {
+        var cameraNextPosition = target.position + offset;
+        var smoothedNextCameraPosition = Vector3.Lerp(transform.position, cameraNextPosition, smoothSpeed);
+        transform.position = smoothedNextCameraPosition;
     }
 }
